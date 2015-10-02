@@ -11,7 +11,7 @@ import java.util.List;
  public class Array_Linked {
     private static final int count = 100 * 1000;
 
-    public static void testBeg(List list) {
+    public static void testBeginning(List list) {
         long time = System.currentTimeMillis();
         for (int i = 0; i < 10000; i++) {
             list.add(0, new Object());
@@ -22,7 +22,7 @@ import java.util.List;
                 list.getClass().getSimpleName() + " время " + time);
     }
 
-    public static void testMid(List list) {
+    public static void testMiddle(List list) {
         long time = System.currentTimeMillis();
         for (int i = 0; i < 10000; i++) {
             list.add(count / 2, new Object());
@@ -46,15 +46,14 @@ import java.util.List;
 
     public static void main(String[] args) {
         List ar = new ArrayList();
-        List lin = new LinkedList();
         for (int i = 0; i < count; i++) {
             ar.add(i);
         }
-        testBeg(ar);
-        testBeg(lin);
-        testMid(ar);
-        testMid(lin);
+        testBeginning(ar);
+        testBeginning(new LinkedList(ar));
+        testMiddle(ar);
+        testMiddle(new LinkedList(ar));
         testEnd(ar);
-        testEnd(lin);
+        testEnd(new LinkedList(ar));
     }
 }
